@@ -1,6 +1,7 @@
 """                           Node Class that Stores Data and Finger Table                          """
 # use bits=160
-
+from node import Node
+from hash_util import hash_function
 
 class Node:
     def __init__(self, node_id, bits=160) -> None:
@@ -20,6 +21,6 @@ class Node:
         return self.data.get(key,None)
 
 
-    def find_successor(self):
+    def find_successor(self, key: str):
         """Find the successor node responsible for a given key"""
         pass
