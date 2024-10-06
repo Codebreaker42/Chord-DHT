@@ -25,6 +25,16 @@ class Chord:
 
     def lookup(self, key):
         """ Lookup the node responsible for key"""
-        key_id = hash_function(key)
+        key_id = hash_function(key,self.bits)
         #logic for finding the responisble node
-        pass
+        # if there are no nods in a system return None 
+        if not self.nodes:
+            return None
+        self.nodes.sort(key=lambda node: node.node_id)
+        # finding which node is closest to the key 
+        for node in self.nodes:
+            if node.node_id>=key_id:
+                return node 
+        return self.nodes[0]     # If no node with node_id >= key_id is found, wrap around to the first node (circular nature)
+
+        
