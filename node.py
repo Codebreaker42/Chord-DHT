@@ -41,8 +41,9 @@ class Node:
                 return self.successor
             return closest_preceding_node.find_successor(key_id) #continue the lookup at preceding nodes
 
-    def initialize_finger_table(self,node):
+    def initialize_finger_table(self):
         """ Initialize the finger table for a given node"""
+        # print(f"bits: {self.bits}")
         for ith_entry in range(self.bits):
             """calculate the target id for the ith finger:  (self.node_id+2^entry)%self.bits"""
             target_id= (self.node_id + 2 ** ith_entry)% (2**self.bits)
