@@ -20,21 +20,3 @@ class DHT:
         node= self.chord.lookup(key)
         return node.lookup_data(key)
     
-if __name__ == "__main__":
-    chord= Chord()
-    dht= DHT(chord)
-    chord.add_node(hash_function("node1",4))
-    # chord.add_node(hash_function("node2"))
-    # dht.put("fruit","apple")
-    # print(f'{dht.get("fruit")}')
-    for key, node in enumerate(chord.nodes):
-        print(f"{key} : {node}")
-        print(f" node_id: {node.node_id} , successor : {node.successor} , predecessor : {node.predecessor}")
-        print("finger table: ")
-        for idx, key_id in enumerate(node.finger_table):
-            print(f" {idx}  :  {key_id}")
-    # print(chord.remove_node(hash_function("node2")))
-    # for key, node in enumerate(chord.nodes):
-    #     print(f"{key} : {node}")
-    #     print(f" node_id: {node.node_id} , successor : {node.successor} , predecessor : {node.predecessor}")
-    
