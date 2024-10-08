@@ -9,14 +9,14 @@ class DHT:
 
 
     def put(self,key,value):
-        """ Store the key value pair in the appropriate node"""
+        """ Store the key value pair in the appropriate node using finger table lookup"""
         key_id= hash_function(key) #determines which node in chord network responsible for storing key
-        node = self.chord.lookup(key) #find the node responsible for storing the data associated with this key
+        node = self.chord.find_successor(key_id) #find the node using finger table 
         node.store_data(key,value)
 
     def get(self, key):
-        """ Retrieve value for a key from the appropriate node"""
+        """ Retrieve value for a key from the appropriate node using finget table lookup"""
         key_id= hash_function(key)
-        node= self.chord.lookup(key)
+        node= self.chord.find_successor(key_id) #find the node using finger table
         return node.lookup_data(key)
     
