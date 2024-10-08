@@ -67,19 +67,6 @@ class Chord:
             node.initialize_finger_table()
         print(f"Node {node_id} has left the dht.")
 
-
-    def lookup(self, key):
-        """ Lookup the node responsible for key"""
-        key_id = hash_function(key,self.bits)
-        # if there are no nods in a system return None 
-        if not self.nodes:
-            return None
-        # finding which node is closest to the key 
-        for node in self.nodes:
-            if node.node_id>=key_id:
-                return node 
-        return self.nodes[0]     # If no node with node_id >= key_id is found, wrap around to the first node (circular nature)
-
     def find_successor(self, key_id):
         """ Find the successor node resposible for the given key_id"""
         if not self.nodes:
